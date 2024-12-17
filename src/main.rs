@@ -211,8 +211,7 @@ fn welcome() {
     // Print time and date
     println!("this what it does genrate (400*x*(0 to 300_000_000 random ))*8 bytes of data");
 }
-
-#[cfg(not(target_os = "windows"))]
+#[cfg(any(target_os = "linux", target_os = "android"))]
 use libc::{c_int, cpu_set_t, sched_setaffinity, CPU_SET, CPU_ZERO};
 
 use std::ffi::CStr;
@@ -224,7 +223,8 @@ use std::path::PathBuf;
 //Android shit
 const PATH_MAX: usize = 4096;
 const FREQ_MAX: usize = 256;
-#[cfg(not(target_os = "android"))]
+
+#[cfg(any(target_os = "linux", target_os = "android"))]
 
 fn bigcore_format_cpu_path(cpu_core: u32) -> PathBuf {
     PathBuf::from(format!(
@@ -232,7 +232,8 @@ fn bigcore_format_cpu_path(cpu_core: u32) -> PathBuf {
         cpu_core
     ))
 }
-#[cfg(not(target_os = "android"))]
+#[cfg(any(target_os = "linux", target_os = "android"))]
+
 fn get_core_max_frequency(cpu_core: u32) -> Option<u64> {
     let path = bigcore_format_cpu_path(cpu_core);
 
@@ -245,6 +246,7 @@ fn get_core_max_frequency(cpu_core: u32) -> Option<u64> {
     }
     None
 }
+#[cfg(any(target_os = "linux", target_os = "android"))]
 
 fn bigcore_set_affinity() -> Result<(), Error> {
     let mut max_freq = 0u64;
@@ -291,7 +293,7 @@ fn bigcore_set_affinity() -> Result<(), Error> {
 }
 
 fn main() {
-    #[cfg(not(target_os = "android"))]
+    #[cfg(any(target_os = "linux", target_os = "android"))]
     match bigcore_set_affinity() {
         Ok(_) => println!("bigcore: affinity set successfully"),
         Err(e) => eprintln!("bigcore: failed to set affinity: {}", e),
