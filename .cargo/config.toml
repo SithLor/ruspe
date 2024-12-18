@@ -9,6 +9,14 @@ rustflags = [
     "target-cpu=cortex-x1",
     "-Z",
     "tune-cpu=cortex-x1",
+    "-C",
+    "link-arg=-z",
+    "-C",
+    "link-arg=max-page-size=4096",
+    "-C",
+    "link-arg=-z",
+    "-C",
+    "link-arg=common-page-size=64",
 ]
 linker = "aarch64-linux-gnu-gcc"
 
