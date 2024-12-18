@@ -2,6 +2,9 @@
 
 mkdir -p build
 
+cargo build --release --target=x86_64-unknown-linux-gnu
+cargo build --release --target=aarch64-unknown-linux-gnu
+
 # Copy ARM release files
 cp -r target/aarch64-unknown-linux-gnu/release/rusp build/rusp_arm_cortex_x1
 
