@@ -6,7 +6,9 @@ linux/wsl
 set rust to nightly
 run ndk_install.sh
 run ndk_build.sh
-
+cargo install cargo-ndk
+rustup target add  aarch64-linux-android 
+rustup target add aarch64-unknown-linux-gnu
 
 build 
     linux-arm: cargo build --target aarch64-unknown-linux-gnu -r 
