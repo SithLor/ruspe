@@ -1,7 +1,22 @@
 [target.aarch64-unknown-linux-gnu]
-rustflags = ["-C", "debuginfo=0", "-C", "strip=debuginfo"]
-
+rustflags = [
+    "-C",
+    "debuginfo=0",
+    "-C",
+    "strip=debuginfo",
+    "-C",
+    "target-cpu=cortex-x1",
+]
 linker = "aarch64-linux-gnu-gcc"
 
+[target.x86_64-pc-windows-msvc]
+rustflags = ["-C", "debuginfo=0", "-C", "strip=debuginfo"]
+linker = "link.exe"
+
+[target.x86_64-unknown-linux-gnu]
+rustflags = ["-C", "debuginfo=0", "-C", "strip=debuginfo"]
+linker = "gcc"
+
 [build]
+# Set the default target to aarch64-unknown-linux-gnu
 target = "aarch64-unknown-linux-gnu"

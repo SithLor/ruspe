@@ -6,5 +6,14 @@ linux/wsl
 set nigh;t for rust
 
 
+build 
+    linux-arm: cargo build --target aarch64-unknown-linux-gnu -r 
+    window-x86: cargo build --target x86_64-pc-windows-msvc -r
+    linux-x86: cargo build --target x86_64-unknown-linux-gnu -r
 
-sudo apt-get install gcc-aarch64-linux-gnu
+run examples
+    linux-arm: cargo run --target aarch64-unknown-linux-gnu -r 
+    window-x86: cargo run --target x86_64-pc-windows-msvc -r
+    linux-x86: cargo run --target x86_64-unknown-linux-gnu -r
+
+sudo apt-get install gcc-aarch64-linux-gnu gcc
