@@ -12,3 +12,7 @@ Cargo.lock
 
 # MSVC Windows builds of rustc generate these, which store debugging information
 *.pdb
+
+android-ndk-r27c
+android-ndk-r27c/ndk-which
+android-ndk-r27c-linux.zip

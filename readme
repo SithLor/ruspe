@@ -3,7 +3,9 @@ to test
 
 
 linux/wsl 
-set nigh;t for rust
+set rust to nightly
+run ndk_install.sh
+run ndk_build.sh
 
 
 build 
