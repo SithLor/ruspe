@@ -1,3 +1,8 @@
+
+//400*(76*(512*2))=159782400000 bytes
+
+// 
+
 #![feature(portable_simd)]
 //andriod
 
@@ -9,7 +14,15 @@ use rayon::prelude::*;
 use std::simd::u64x4;
 use std::time::Instant;
 
+
+
+//400 ittem
+//  name 
+//  sell list 512,000  size:76*1,000,0000 byte
+//  price list 512,000 size:24 byte
+
 static mut SIZE_BYTE: usize = 0;
+
 #[derive(Debug)]
 struct Item {
     name: String,
