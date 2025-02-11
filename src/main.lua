@@ -1,3 +1,5 @@
+use rand::Rng;
+
 
 static mut SIZE_BYTE: usize = 0;
 
