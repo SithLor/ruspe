@@ -1,3 +1,33 @@
+
+static mut SIZE_BYTE: usize = 0;
+
+#[derive(Debug)]
+struct Item {
+    name: String,
+    price: Vec<i64>,
+    sell: Vec<i64>,
+}
+fn calculate_size(arr: &Vec<Item>) -> usize {
+    arr.iter()
+        .map(|item| {
+            item.name.len() * std::mem::size_of::<u8>()
+                + item.price.len() * std::mem::size_of::<i64>()
+                + item.sell.len() * std::mem::size_of::<i64>()
+        })
+        .sum()
+}
+
+
+fn _calculate_size(arr: &Vec<Item>) -> usize {
+    let mut size_byte = 0;
+    for item in arr.iter() {
+        size_byte += item.name.len() * std::mem::size_of::<u8>();
+        size_byte += item.price.len() * std::mem::size_of::<i64>();
+        size_byte += item.sell.len() * std::mem::size_of::<i64>();
+    }
+    size_byte
+}
+
 fn _fast_pure_rust(t: usize) {
     let price_per_item_max = 300_000_000i64;
     let price_per_item_min = 0i64;
