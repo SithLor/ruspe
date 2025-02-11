@@ -2,6 +2,8 @@ use rand::distributions::{Distribution, Uniform};
 use rand::Rng;
 use rand_core::SeedableRng;
 use rand_pcg::Pcg64Mcg;
+use std::time::Instant;
+use rayon::prelude::*;
 
 static mut SIZE_BYTE: usize = 0;
 
