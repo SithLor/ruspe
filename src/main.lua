@@ -131,3 +131,11 @@ fn welcome() {
     // Print time and date
     println!("this what it does genrate (400*x*(0 to 300_000_000 random ))*8 bytes of data");
 }
+
+
+fn main() {
+    
+    welcome();
+
+    test(500);
+}
